@@ -10,7 +10,7 @@ const Footer = () => {
     };
 
     return (
-        <footer className="bg-base-200 text-base-content px-6 py-10 md:py-16 lg:py-24 mt-10">
+        <footer className="bg-base-300 text-base-content px-6 py-10 md:py-16 lg:py-24 mt-10">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
 
                 {/* Site Info */}
@@ -28,7 +28,7 @@ const Footer = () => {
 
                 {/* Links */}
                 <div>
-                    <h3 className="text-lg font-semibold mb-2">Useful Links</h3>
+                    <h3 className="footer-title mb-2">Legal</h3>
                     <ul className="space-y-1">
                         <li><Link to="/terms" onClick={scrollToTop} className="link link-hover">Terms & Conditions</Link></li>
                         <li><Link to="/privacy" onClick={scrollToTop} className="link link-hover">Privacy Policy</Link></li>
@@ -39,7 +39,7 @@ const Footer = () => {
 
                 {/* Social Media links */}
                 <div>
-                    <h3 className="text-lg font-semibold mb-2">Follow Us</h3>
+                    <h3 className="footer-title mb-2">Follow Us</h3>
                     <div className="flex space-x-4 text-xl">
                         <a href="https://www.facebook.com/Sheikhshubo333" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600">
                             <FaFacebookF />
