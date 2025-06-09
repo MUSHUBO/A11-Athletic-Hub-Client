@@ -1,15 +1,15 @@
 import React from 'react';
 import { Outlet } from 'react-router';
-import Navbar from '../components/Header/Navbar';
 import Footer from '../components/Footer/Footer';
+import Navbar from '../components/Header/Navbar';
 
-const MainLayout = () => {
+const AuthLayout = () => {
     return (
         <div>
             <header className='border-b-2 border-base-300'>
                 <Navbar></Navbar>
             </header>
-            <main className='w-11/12 mx-auto'>
+            <main>
                 <Outlet></Outlet>
             </main>
             <footer>
@@ -19,4 +19,4 @@ const MainLayout = () => {
     );
 };
 
-export default MainLayout;
+export default AuthLayout;
