@@ -6,6 +6,8 @@ import AuthLayout from "../layouts/AuthLayout";
 import Login from "../features/auth/Login";
 import Register from "../features/auth/Register";
 import NotFound from "../pages/Error/NotFound";
+import Terms from "../pages/Terms&Privacy/Terms";
+import Privacy from "../pages/Terms&Privacy/Privacy";
 
 const router = createBrowserRouter([
     {
@@ -26,8 +28,20 @@ const router = createBrowserRouter([
                 element: <div>Create Event</div>
             },
             {
+                path: '/book-event',
+                element: <div>book event</div>
+            },
+            {
                 path: '/myBookings',
                 element: <div>My Bookings</div>
+            },
+            {
+                path: '/terms',
+                Component: Terms
+            },
+            {
+                path: '/privacy',
+                Component: Privacy
             },
         ]
     },
