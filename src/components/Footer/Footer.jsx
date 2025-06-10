@@ -10,8 +10,8 @@ const Footer = () => {
     };
 
     return (
-        <footer className="bg-base-300 text-base-content px-6 py-10 md:py-16 lg:py-24 mt-10">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        <footer className="bg-base-300 text-base-content px-6 py-10 md:py-14 lg:py-20 mt-10">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 py-4">
 
                 {/* Site Info */}
                 <div>
@@ -59,7 +59,7 @@ const Footer = () => {
             </div>
 
             {/* Copyright */}
-            <div className="text-center text-sm mt-8 border-t pt-4">
+            <div className="text-center text-sm mt-16 border-t pt-14">
                 © {new Date().getFullYear()} Athletic Hub. All rights reserved.
             </div>
         </footer>
