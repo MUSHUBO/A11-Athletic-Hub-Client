@@ -1,13 +1,14 @@
 import { createBrowserRouter } from "react-router";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home/Home";
-import Events from "../features/Events/Events";
 import AuthLayout from "../layouts/AuthLayout";
 import Login from "../features/auth/Login";
 import Register from "../features/auth/Register";
 import NotFound from "../pages/Error/NotFound";
 import Terms from "../pages/Terms&Privacy/Terms";
 import Privacy from "../pages/Terms&Privacy/Privacy";
+import CreateEvent from "../features/Events/CreateEvent";
+import AllEvents from "../features/Events/AllEvents";
 
 const router = createBrowserRouter([
     {
@@ -20,20 +21,13 @@ const router = createBrowserRouter([
                 Component: Home
             },
             {
-                path: '/events',
-                Component: Events
+                path: '/allEvents',
+                Component: AllEvents,
+                loader: () => fetch('http://localhost:3000/events')
             },
             {
                 path: '/create-event',
-                element: <div>Create Event</div>
-            },
-            {
-                path: '/book-event',
-                element: <div>book event</div>
-            },
-            {
-                path: '/myBookings',
-                element: <div>My Bookings</div>
+                Component: CreateEvent
             },
             {
                 path: '/terms',
