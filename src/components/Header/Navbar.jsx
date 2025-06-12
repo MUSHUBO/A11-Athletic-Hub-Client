@@ -69,7 +69,7 @@ const Navbar = () => {
 
                 {/* login logOut button */}
                 <Link to="/auth/login">
-                    <button className='btn btn-outline btn-primary'>LogIn</button>
+                    <button className='btn btn-outline btn-primary'>Login</button>
                 </Link>
             </div>
         </div >
