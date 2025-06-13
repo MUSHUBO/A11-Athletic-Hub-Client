@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const Login = () => {
+    const {signInUser} = useContext(AuthContext)
 
     const handleLogin = e => {
         e.preventDefault();
@@ -12,7 +14,13 @@ const Login = () => {
         console.log({ email, password });
 
         // firebase Login Send.
-
+        signInUser(email, password)
+        .then(result => {
+            console.log(result.user);
+        })
+        .catch(error => {
+            alert(error)
+        })
     }
 
     return (
