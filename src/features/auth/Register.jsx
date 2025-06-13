@@ -1,20 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { toast, ToastContainer } from 'react-toastify';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../contexts/AuthContext';
 
 
 const Register = () => {
+    const { createUser } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleRegister = e => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-        console.log(data);
+        const { email, password, data } = Object.fromEntries(formData.entries());
+        console.log(email, password, data);
 
-        const password = data.password;
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
         if (!passwordRegex.test(password)) {
@@ -22,16 +24,22 @@ const Register = () => {
             return;
         }
 
-        Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Registration successful!",
-            showConfirmButton: false,
-            timer: 1500
-        });
-        // form.reset();
-
-        // Create user with firebase.
+        // Create user with Firebase.
+        createUser(email, password)
+            .then(result => {
+                console.log(result.user);
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Registration successful!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                navigate('/');
+            })
+            .catch(error => {
+                alert(error)
+            })
 
     }
 
