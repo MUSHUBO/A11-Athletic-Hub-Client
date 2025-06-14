@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext';
+import Swal from 'sweetalert2';
 
 const Login = () => {
-    const {signInUser} = useContext(AuthContext)
+    const { signInUser } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleLogin = e => {
         e.preventDefault();
@@ -15,12 +17,22 @@ const Login = () => {
 
         // firebase Login Send.
         signInUser(email, password)
-        .then(result => {
-            console.log(result.user);
-        })
-        .catch(error => {
-            alert(error)
-        })
+            .then(result => {
+                console.log(result.user);
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "LogIn Successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                setTimeout(() => {
+                    navigate('/');
+                }, 1500);
+            })
+            .catch(error => {
+                alert(error)
+            })
     }
 
     return (

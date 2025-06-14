@@ -9,6 +9,7 @@ import Terms from "../pages/Terms&Privacy/Terms";
 import Privacy from "../pages/Terms&Privacy/Privacy";
 import CreateEvent from "../features/Events/CreateEvent";
 import AllEvents from "../features/Events/AllEvents";
+import MyBookings from "../features/Events/MyBookings";
 
 const router = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
             {
                 path: '/create-event',
                 Component: CreateEvent
+            },
+            {
+                path: '/myBookings',
+                Component: MyBookings
             },
             {
                 path: '/terms',

@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router';
 import "./navLinks.css"
 import navLogo from '../../assets/fav-icon.png'
 import avatar from '../../assets/profile-avatar.png'
+import { AuthContext } from '../../contexts/AuthContext';
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogout = () => {
+        logOut()
+            .then(() => {
+                console.log("Logout successful");
+            })
+            .catch((error) => {
+                console.error("Logout error:", error);
+            });
+    };
 
     const links = <>
         <NavLink to="/" className={({ isActive }) => isActive ? "link active" : "link"}>
@@ -46,31 +58,44 @@ const Navbar = () => {
                 </ul>
             </div>
 
-            <div className="navbar-end flex gap-5">
-                {/* avatar dropdown section */}
+            <div className="navbar-end flex items-center gap-5">
                 <div className="dropdown dropdown-end">
-                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img alt="Tailwind CSS Navbar component" src={avatar} />
+                    {/* Profile Image and Name */}
+                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar tooltip tooltip-bottom" data-tip={user?.displayName || "Guest"}>
+                        <div className="w-11 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                            <img src={user?.photoURL || avatar} alt="Profile" />
                         </div>
                     </div>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-6 w-52 p-2 shadow">
+
+                    {/* Dropdown content */}
+                    <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                         <li>
-                            {links}
-                            <a className="justify-between">
-                                Profile
-                                <span className="badge">New</span>
-                            </a>
+                            <NavLink to="/book-event">Book Event</NavLink>
                         </li>
-                        <li><a>Settings</a></li>
-                        <li><a>Logout</a></li>
+                        <li>
+                            <NavLink to="/myBookings">My Bookings</NavLink>
+                        </li>
+                        {user?.role === 'organizer' && (
+                            <li>
+                                <NavLink to="/manage-events">Manage Events</NavLink>
+                            </li>
+                        )}
                     </ul>
                 </div>
 
-                {/* login logOut button */}
-                <Link to="/auth/login">
-                    <button className='btn btn-outline btn-primary'>Login</button>
-                </Link>
+                {/* Login or Logout */}
+                {
+                    user ? (
+                        <button onClick={handleLogout} className="btn btn-outline hover:btn-error">
+                            Logout
+                        </button>
+                    ) : (
+                        <Link to="/auth/login" className="btn btn-primary">
+                            Login
+                        </Link>
+                    )
+                }
+
             </div>
         </div >
     );

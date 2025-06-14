@@ -1,20 +1,24 @@
 import React, { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { toast, ToastContainer } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthContext';
+import { updateProfile } from 'firebase/auth';
+import Swal from 'sweetalert2';
 
 
 const Register = () => {
     const { createUser } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleRegister = e => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
+        const name = form.name.value;
         const photo = form.photo.value;
-        console.log({email, password, photo});
+        console.log({ email, password, photo });
 
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
@@ -26,10 +30,25 @@ const Register = () => {
         // Create user with Firebase.
         createUser(email, password)
             .then(result => {
-                console.log(result.user);
+                const user = result.user;
+
+                // User profile upgrade.
+                updateProfile(user, {
+                    displayName: name,
+                    photoURL: photo
+                });
+
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Your Account Is Created!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                navigate('/');
 
             }).catch(error => {
-                console.log(error);
+                alert(error);
             })
 
     }
@@ -79,6 +98,7 @@ const Register = () => {
                     Already have an account? <Link to="/auth/login" className="text-primary hover:underline">Login</Link>
                 </p>
             </div>
+            <ToastContainer position="top-right" autoClose={3000} />
         </div>
     );
 };
