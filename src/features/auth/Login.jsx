@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
-import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext';
 import Swal from 'sweetalert2';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import SocialLogin from '../../components/SocialLogin/SocialLogin';
 
 const Login = () => {
     const { signInUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-    
+
     const from = location.state || '/';
 
     const handleLogin = e => {
@@ -16,7 +18,7 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log({ email, password });
+        // console.log({ email, password });
 
         // firebase Login Send.
         signInUser(email, password)
@@ -34,8 +36,9 @@ const Login = () => {
                 }, 1500);
             })
             .catch(error => {
-                alert(error)
-            })
+                console.error(error);
+                toast.error('Invalid Email or Password');
+            });
     }
 
     return (
@@ -81,16 +84,16 @@ const Login = () => {
                 <div className="divider">OR</div>
 
                 {/* google login */}
-                <button className="btn btn-outline w-full flex items-center gap-2">
-                    <FcGoogle size={20} />
-                    Login with Google
-                </button>
+                <div>
+                    <SocialLogin></SocialLogin>
+                </div>
 
                 {/* register page */}
                 <p className="text-center text-sm">
                     Don’t have an account? <Link to="/auth/register" className="text-primary hover:underline">Register</Link>
                 </p>
             </div>
+            <ToastContainer position="top-right" autoClose={3000} />
         </div>
     );
 };

@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { FcGoogle } from 'react-icons/fc';
 import { Link, useNavigate } from 'react-router';
 import { toast, ToastContainer } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthContext';
 import { updateProfile } from 'firebase/auth';
 import Swal from 'sweetalert2';
+import SocialLogin from '../../components/SocialLogin/SocialLogin';
 
 
 const Register = () => {
@@ -18,7 +18,7 @@ const Register = () => {
         const password = form.password.value;
         const name = form.name.value;
         const photo = form.photo.value;
-        console.log({ email, password, photo });
+        // console.log({ email, password, photo });
 
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
@@ -89,10 +89,9 @@ const Register = () => {
 
                 <div className="divider">OR</div>
 
-                <button className="btn btn-outline w-full flex items-center justify-center gap-2" >
-                    <FcGoogle size={20} />
-                    Continue with Google
-                </button>
+                <div>
+                    <SocialLogin></SocialLogin>
+                </div>
 
                 <p className="text-center text-sm">
                     Already have an account? <Link to="/auth/login" className="text-primary hover:underline">Login</Link>
