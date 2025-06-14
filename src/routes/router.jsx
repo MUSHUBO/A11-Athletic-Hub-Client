@@ -11,6 +11,7 @@ import CreateEvent from "../features/Events/CreateEvent";
 import AllEvents from "../features/Events/AllEvents";
 import MyBookings from "../features/Events/MyBookings";
 import BookEvent from "../features/Events/bookEvent";
+import PrivateRoute from "../provider/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -29,15 +30,27 @@ const router = createBrowserRouter([
             },
             {
                 path: '/create-event',
-                Component: CreateEvent
+                element: (
+                    <PrivateRoute>
+                        <CreateEvent></CreateEvent>
+                    </PrivateRoute>
+                )
             },
             {
                 path: '/book-event',
-                Component: BookEvent
+                element: (
+                    <PrivateRoute>
+                        <BookEvent></BookEvent>
+                    </PrivateRoute>
+                )
             },
             {
                 path: '/myBookings',
-                Component: MyBookings
+                element: (
+                    <PrivateRoute>
+                        <MyBookings></MyBookings>
+                    </PrivateRoute>
+                )
             },
             {
                 path: '/terms',
