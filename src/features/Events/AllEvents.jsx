@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLoaderData } from 'react-router';
 import SingleEvent from './SingleEvent';
 
 const AllEvents = () => {
     const allEventsData = useLoaderData();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <div className='my-10 w-10/11 sm:w-full mx-auto'>

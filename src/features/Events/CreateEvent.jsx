@@ -7,7 +7,7 @@ const CreateEvent = () => {
         const form = e.target;
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
-        console.log(data);
+        // console.log(data);
 
         // save event to the database
         axios.post('http://localhost:3000/events', data)

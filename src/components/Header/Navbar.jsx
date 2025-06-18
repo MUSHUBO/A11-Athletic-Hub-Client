@@ -4,6 +4,7 @@ import "./navLinks.css"
 import navLogo from '../../assets/fav-icon.png'
 import avatar from '../../assets/profile-avatar.png'
 import { AuthContext } from '../../contexts/AuthContext';
+import Swal from 'sweetalert2';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -11,7 +12,24 @@ const Navbar = () => {
     const handleLogout = () => {
         logOut()
             .then(() => {
-                console.log("Logout successful");
+                // console.log("Logout successful");
+                Swal.fire({
+                    title: "Are you sure you want to log-out?",
+                    text: "Log out of Athletic Hub?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Log Out!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: "Log Out!",
+                            text: "Log Out Successfully.",
+                            icon: "success"
+                        });
+                    }
+                });
             })
             .catch((error) => {
                 console.error("Logout error:", error);
@@ -73,7 +91,7 @@ const Navbar = () => {
                             <NavLink to="/book-event">Book Event</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/myBookings">My Bookings</NavLink>
+                            <NavLink to="/my-bookings">My Bookings</NavLink>
                         </li>
                         {user?.role === 'organizer' && (
                             <li>
