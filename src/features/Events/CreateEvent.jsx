@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import axios from 'axios';
+import { AuthContext } from '../../contexts/AuthContext';
+import Swal from 'sweetalert2';
 
 const CreateEvent = () => {
+    const { user } = useContext(AuthContext);
+    const userName = user?.displayName || "";
+    const userEmail = user?.email || "";
+
     const handleAddEvent = e => {
         e.preventDefault();
         const form = e.target;
@@ -12,11 +18,25 @@ const CreateEvent = () => {
         // save event to the database
         axios.post('http://localhost:3000/events', data)
             .then(res => {
-                console.log(res);
+                if (res.data.insertedId || res.data._id) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Event Created!',
+                        text: 'Your event has been successfully created.',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                    form.reset();
+                }
             })
             .catch(error => {
-                alert(error);
-            })
+                console.error(error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: 'Failed to create event. Please try again.',
+                });
+            });
     }
 
     return (
@@ -26,6 +46,8 @@ const CreateEvent = () => {
 
             <form onSubmit={handleAddEvent}>
                 <div className="max-w-xl mx-auto p-6 bg-white rounded-xl shadow-md space-y-6">
+
+                    {/* Event Details */}
                     <fieldset className="border border-gray-300 rounded-lg p-4">
                         <legend className="text-lg font-semibold text-emerald-600 px-2">Event Details</legend>
 
@@ -73,9 +95,23 @@ const CreateEvent = () => {
                                     className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
                                 />
                             </div>
+
+                            {/* Location */}
+                            <div>
+                                <label htmlFor="location" className="block mb-1 font-medium text-gray-700">Location</label>
+                                <input
+                                    type="text"
+                                    id="location"
+                                    name="location"
+                                    required
+                                    placeholder="Event location"
+                                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                                />
+                            </div>
                         </div>
                     </fieldset>
 
+                    {/* Description & Image */}
                     <fieldset className="border border-gray-300 rounded-lg p-4">
                         <legend className="text-lg font-semibold text-emerald-600 px-2">Description & Image</legend>
 
@@ -108,6 +144,38 @@ const CreateEvent = () => {
                         </div>
                     </fieldset>
 
+                    {/* Creator Info */}
+                    <fieldset className="border border-emerald-400 rounded-lg p-4">
+                        <legend className="text-lg font-semibold text-emerald-600 px-2">Creator Info</legend>
+
+                        <div className="mt-4 flex flex-col space-y-4">
+                            {/* Creator Name */}
+                            <div>
+                                <label htmlFor="creatorName" className="block mb-1 font-medium text-gray-700">Creator Name</label>
+                                <input
+                                    type="text"
+                                    id="creatorName"
+                                    name="creatorName"
+                                    value={userName}
+                                    readOnly
+                                    className="w-full px-4 py-2 cursor-not-allowed border border-emerald-300 bg-gray-100 rounded-md focus:outline-none"
+                                />
+                            </div>
+
+                            {/* Creator Email */}
+                            <div>
+                                <label htmlFor="creatorEmail" className="block mb-1 font-medium text-gray-700">Creator Email</label>
+                                <input
+                                    type="email"
+                                    id="creatorEmail"
+                                    name="creatorEmail"
+                                    value={userEmail}
+                                    readOnly
+                                    className="w-full px-4 py-2 cursor-not-allowed border border-emerald-300 bg-gray-100 rounded-md focus:outline-none"
+                                />
+                            </div>
+                        </div>
+                    </fieldset>
 
                     {/* submitted button */}
                     <button

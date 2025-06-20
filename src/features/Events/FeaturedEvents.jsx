@@ -1,12 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router';
+import FeaturedEvent from './FeaturedEvent';
 
-const FeaturedEvents = () => {
+const FeaturedEvents = ({eventsData}) => {
+    
     return (
         <div className='my-32'>
             <h1 className='text-4xl font-bold text-center'><span className='text-cyan-600'>Featured</span> Events</h1>
             <p className='text-gray-600 text-center mt-2 mb-10'>There is Featured 6 Events by date available</p>
 
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+                {
+                    eventsData.map(event => <FeaturedEvent 
+                        key={event._id}
+                        event={event}
+                    ></FeaturedEvent>)
+                }
+            </div>
 
             {/* button */}
             <div className='text-center mt-16'>

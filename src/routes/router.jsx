@@ -12,6 +12,7 @@ import AllEvents from "../features/Events/AllEvents";
 import MyBookings from "../features/Events/MyBookings";
 import BookEvent from "../features/Events/bookEvent";
 import PrivateRoute from "../provider/PrivateRoute";
+import EventDetails from "../features/Events/EventDetails";
 
 const router = createBrowserRouter([
     {
@@ -21,12 +22,22 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 index: true,
-                Component: Home
+                Component: Home,
+                loader: () => fetch('http://localhost:3000/events')
             },
             {
                 path: '/allEvents',
                 Component: AllEvents,
                 loader: () => fetch('http://localhost:3000/events')
+            },
+            {
+                path: '/event/:id',
+                loader: ({ params }) => fetch(`http://localhost:3000/events/${params.id}`),
+                element: (
+                    <PrivateRoute>
+                        <EventDetails></EventDetails>
+                    </PrivateRoute>
+                )
             },
             {
                 path: '/create-event',

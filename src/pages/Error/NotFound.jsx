@@ -2,11 +2,12 @@ import React from 'react';
 import Lottie from 'lottie-react';
 import notFoundPage from '../../assets/animation/not-found-page.json'
 import { Link } from 'react-router';
+import { FaArrowLeft } from 'react-icons/fa';
 
 const NotFound = () => {
     return (
-        <div className="h-screen flex flex-col justify-center items-center bg-gradient-to-br from-[#fdfbfb] to-[#ebedee] dark:from-[#1f2937] dark:to-[#111827] text-center px-4">
-            <div className="w-[280px] sm:w-[400px] md:w-[500px]">
+        <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#fdfbfb] to-[#ebedee] dark:from-[#1f2937] dark:to-[#111827] text-center px-4 py-10">
+            <div className="w-[260px] sm:w-[380px] md:w-[500px] flex-shrink-0">
                 <Lottie animationData={notFoundPage} loop={true} />
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-800 dark:text-gray-100 mt-4">
@@ -19,7 +20,8 @@ const NotFound = () => {
                 to="/"
                 className="btn bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold px-6 py-2 rounded-lg shadow-lg hover:scale-105 transition-transform"
             >
-                ⬅ Back to Home
+                <FaArrowLeft className="text-white" />
+                Back to Home
             </Link>
         </div>
     );
