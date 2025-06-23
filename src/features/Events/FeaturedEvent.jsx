@@ -5,7 +5,7 @@ const FeaturedEvent = ({ event }) => {
     const { _id, eventName, eventDate, location } = event;
 
     return (
-        <div className="card bg-base-100 mb-10 md:mb-0 border-b-2 border-l border-t border-cyan-600 shadow-md hover:shadow-lg">
+        <div className="card bg-base-100 mb-10 md:mb-0 border-b-2 border-l border-t border-cyan-600 shadow-md hover:scale-105 transition duration-300">
 
             <div className="card-body">
                 <div className='flex flex-col md:flex-row items-start md:items-center space-y-4'>
