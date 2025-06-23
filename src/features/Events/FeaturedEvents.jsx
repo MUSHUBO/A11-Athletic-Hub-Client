@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import FeaturedEvent from './FeaturedEvent';
 
-const FeaturedEvents = ({eventsData}) => {
-    
+const FeaturedEvents = () => {
+
+    const [eventsData, setEventsData] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:3000/featured-events')
+            .then(res => res.json())
+            .then(data => setEventsData(data));
+    }, []);
+
     return (
         <div className='my-32'>
             <h1 className='text-4xl font-bold text-center'><span className='text-cyan-600'>Featured</span> Events</h1>
@@ -11,7 +19,7 @@ const FeaturedEvents = ({eventsData}) => {
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                 {
-                    eventsData.map(event => <FeaturedEvent 
+                    eventsData.map(event => <FeaturedEvent
                         key={event._id}
                         event={event}
                     ></FeaturedEvent>)

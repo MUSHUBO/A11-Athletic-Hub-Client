@@ -1,10 +1,8 @@
 import React from 'react';
 import Banner from '../../components/Banner/Banner';
 import FeaturedEvents from '../../features/Events/FeaturedEvents';
-import { useLoaderData } from 'react-router';
 
 const Home = () => {
-    const eventsData = useLoaderData();
 
     return (
         <div>
@@ -12,7 +10,7 @@ const Home = () => {
                 <Banner></Banner>
             </section>
             <section className='Events'>
-                <FeaturedEvents eventsData={eventsData}></FeaturedEvents>
+                <FeaturedEvents></FeaturedEvents>
             </section>
             <section className='section-01'>
 

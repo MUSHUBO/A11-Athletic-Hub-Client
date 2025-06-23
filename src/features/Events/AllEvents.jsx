@@ -13,7 +13,7 @@ const AllEvents = () => {
             <h1 className='text-4xl font-bold text-center'>All <span className='text-purple-700'>Events </span>Is Here</h1>
             <p className='text-gray-600 text-center mt-2 mb-10'>There is available all the events</p>
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5'>
                 {
                     allEventsData.map(event => <SingleEvent
                         key={event._id}
