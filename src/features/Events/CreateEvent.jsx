@@ -78,6 +78,8 @@ const CreateEvent = () => {
                                     <option value="" disabled>Select event type</option>
                                     <option value="Swimming">Swimming</option>
                                     <option value="Sprinting">Sprinting</option>
+                                    <option value="Sprinting">Marathon</option>
+                                    <option value="Sprinting">Cycling</option>
                                     <option value="Long Jump">Long Jump</option>
                                     <option value="High Jump">High Jump</option>
                                     <option value="Hurdle Race">Hurdle Race</option>

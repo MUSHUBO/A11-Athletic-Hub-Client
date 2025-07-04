@@ -2,6 +2,7 @@ import React from 'react';
 import Banner from '../../components/Banner/Banner';
 import FeaturedEvents from '../../features/Events/FeaturedEvents';
 import Testimonials from '../../components/Testimonials/Testimonials';
+import PopularSports from '../../features/Events/PopularSports';
 
 const Home = () => {
 
@@ -14,10 +15,10 @@ const Home = () => {
                 <FeaturedEvents></FeaturedEvents>
             </section>
             <section className='section-01'>
-                <Testimonials></Testimonials>
+                <PopularSports></PopularSports>
             </section>
             <section className='section-02'>
-
+                <Testimonials></Testimonials>
             </section>
         </div>
     );

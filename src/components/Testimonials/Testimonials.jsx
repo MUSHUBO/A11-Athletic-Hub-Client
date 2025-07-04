@@ -20,7 +20,10 @@ const Testimonials = () => {
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
                 {
-                    feedbacks.map(feedback => <Testimonial feedback={feedback}></Testimonial>)
+                    feedbacks.map(feedback => <Testimonial
+                        key={feedback._id}
+                        feedback={feedback}
+                    ></Testimonial>)
                 }
             </div>
         </div>

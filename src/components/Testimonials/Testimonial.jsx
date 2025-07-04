@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Testimonial = ({ feedback }) => {
-    console.log(feedback);
+    // console.log(feedback);
     const { name, image, comment } = feedback;
 
     return (
