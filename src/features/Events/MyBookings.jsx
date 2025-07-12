@@ -1,9 +1,51 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
+import axios from 'axios';
+import { FaTrashAlt } from 'react-icons/fa';
+import MyBooking from './MyBooking';
 
 const MyBookings = () => {
+    const { user } = useContext(AuthContext);
+    const [bookings, setBookings] = useState([]);
+
+    useEffect(() => {
+        if (user?.email) {
+            axios.get(`http://localhost:3000/bookings?email=${user.email}`)
+                .then(res => setBookings(res.data))
+                .catch(err => console.error(err));
+        }
+    }, [user]);
+
     return (
-        <div>
-            My Events
+        <div className='max-w-6xl mx-auto p-4 mb-16'>
+            <h2 className="text-4xl font-bold text-center my-8">🎟️ My Bookings</h2>
+
+            {bookings.length === 0 ? (
+                <p className="text-center text-gray-500">You have no bookings yet.</p>
+            ) : (
+                <div className="overflow-x-auto">
+                    <table className="table table-zebra border border-base-300">
+                        <thead className="bg-purple-100 text-purple-800">
+                            <tr>
+                                <th>#</th>
+                                <th>Event</th>
+                                <th>Date</th>
+                                <th>Location</th>
+                                <th>Type</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {bookings.map((booking, index) =>
+                                <MyBooking
+                                    key={booking._id}
+                                    index={index}
+                                    booking={booking}
+                                ></MyBooking>)}
+                        </tbody>
+                    </table>
+                </div>
+            )}
         </div>
     );
 };

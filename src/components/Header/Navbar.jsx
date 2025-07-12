@@ -90,14 +90,21 @@ const Navbar = () => {
                         <li>
                             <NavLink to="/book-event">Book Event</NavLink>
                         </li>
-                        <li>
-                            <NavLink to="/my-bookings">My Bookings</NavLink>
-                        </li>
-                        {user?.role === 'organizer' && (
-                            <li>
-                                <NavLink to="/manage-events">Manage Events</NavLink>
-                            </li>
-                        )}
+                        {
+                            user && <>
+                                <li>
+                                    <NavLink to="/my-bookings">My Bookings</NavLink>
+                                </li>
+                            </>
+                        }
+
+                        {
+                            user?.role === 'organizer' && (
+                                <li>
+                                    <NavLink to="/manage-events">Manage Events</NavLink>
+                                </li>
+                            )
+                        }
                     </ul>
                 </div>
 
