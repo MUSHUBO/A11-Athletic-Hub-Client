@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import axios from 'axios';
-import { FaTrashAlt } from 'react-icons/fa';
 import MyBooking from './MyBooking';
+import { ToastContainer } from 'react-toastify';
 
 const MyBookings = () => {
     const { user } = useContext(AuthContext);
@@ -41,11 +41,15 @@ const MyBookings = () => {
                                     key={booking._id}
                                     index={index}
                                     booking={booking}
+                                    onDeleteSuccess={(deletedId) => {
+                                        setBookings(prev => prev.filter(b => b._id !== deletedId));
+                                    }}
                                 ></MyBooking>)}
                         </tbody>
                     </table>
                 </div>
             )}
+            <ToastContainer position="top-right" autoClose={3000} />
         </div>
     );
 };

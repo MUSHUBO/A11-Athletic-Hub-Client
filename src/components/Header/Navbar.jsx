@@ -9,31 +9,36 @@ import Swal from 'sweetalert2';
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
 
-    const handleLogout = () => {
-        logOut()
-            .then(() => {
-                // console.log("Logout successful");
-                Swal.fire({
-                    title: "Are you sure you want to log-out?",
-                    text: "Log out of Athletic Hub?",
-                    icon: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#3085d6",
-                    cancelButtonColor: "#d33",
-                    confirmButtonText: "Log Out!"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            title: "Log Out!",
-                            text: "Log Out Successfully.",
-                            icon: "success"
-                        });
-                    }
+    const handleLogout = async () => {
+
+        const result = await Swal.fire({
+            title: "Are you sure you want to log-out?",
+            text: "Log out of Athletic Hub?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Log Out!"
+        })
+
+        if (result.isConfirmed) {
+            logOut()
+                .then(() => {
+                    Swal.fire({
+                        title: "Logged Out!",
+                        text: "You have been logged out successfully.",
+                        icon: "success"
+                    });
+                })
+                .catch((error) => {
+                    console.error("Logout error:", error);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Something went wrong while logging out!"
+                    });
                 });
-            })
-            .catch((error) => {
-                console.error("Logout error:", error);
-            });
+        }
     };
 
     const links = <>

@@ -22,7 +22,7 @@ const EventDetails = () => {
         currentEvent.eventId = id;
         delete currentEvent._id;
 
-        axios.post('http://localhost:3000/booking', currentEvent)
+        axios.post('http://localhost:3000/bookings', currentEvent)
             .then(res => {
                 if (res.data.insertedId) {
                     toast.success("Event Booking Successful!");
