@@ -35,7 +35,6 @@ const EventDetails = () => {
                     console.error('Booking Failed', err);
                     toast.error("Event Booking Failed! Please try again.");
                 }
-
             });
     };
 

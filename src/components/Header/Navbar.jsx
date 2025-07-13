@@ -104,9 +104,14 @@ const Navbar = () => {
                         }
 
                         {
-                            user?.role === 'organizer' && (
+                            // user?.role === 'organizer' && (
+                            //     <li>
+                            //         <NavLink to="/manage-events">Manage Events</NavLink>
+                            //     </li>
+                            // )
+                            user && (
                                 <li>
-                                    <NavLink to="/manage-events">Manage Events</NavLink>
+                                    <NavLink to="/manageEvents">Manage Events</NavLink>
                                 </li>
                             )
                         }
@@ -114,7 +119,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Login or Logout */}
-                {
+                {   
                     user ? (
                         <button onClick={handleLogout} className="btn btn-outline hover:btn-error">
                             Logout
