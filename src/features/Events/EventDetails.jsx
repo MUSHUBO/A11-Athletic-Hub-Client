@@ -29,8 +29,12 @@ const EventDetails = () => {
                 }
             })
             .catch(err => {
-                console.error('Booking Failed', err);
-                toast.error("Event Booking Failed!");
+                if (err.response?.status === 400 && err.response?.data?.message === "Already booked this event") {
+                    toast.error("❌ You've already booked this event!");
+                } else {
+                    console.error('Booking Failed', err);
+                    toast.error("Event Booking Failed! Please try again.");
+                }
 
             });
     };
@@ -71,7 +75,7 @@ const EventDetails = () => {
                     </button>
                 </div>
             </div>
-            <ToastContainer position="top-right" autoClose={3000} />
+            <ToastContainer position="top-right" autoClose={2000} />
         </div>
     );
 };
