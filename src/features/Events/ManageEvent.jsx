@@ -1,15 +1,41 @@
+import axios from 'axios';
 import React from 'react';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
-const ManageEvent = ({event, index}) => {
-    const {image, eventName, eventDate, location, eventType} = event;
+const ManageEvent = ({ event, index, onDeleteSuccess }) => {
+    const { _id, image, eventName, eventDate, location, eventType } = event;
 
     const handleUpdate = () => {
 
     };
 
-    const handleDelete = () => {
-        
+    const handleDelete = async () => {
+        const result = await Swal.fire({
+            title: "Are you sure?",
+            text: "This event will be permanently deleted!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        });
+
+        if (result.isConfirmed) {
+            axios.delete(`http://localhost:3000/events/${_id}`)
+                .then(res => {
+                    if (res.data.deletedCount > 0) {
+                        Swal.fire("Deleted!", "Your event has been deleted.", "success");
+                        onDeleteSuccess(_id); // Update parent state
+                    }
+                })
+                .catch(err => {
+                    console.error("Delete failed:", err);
+                    Swal.fire("Error!", "Something went wrong.", "error");
+                });
+
+
+        }
     }
 
     return (

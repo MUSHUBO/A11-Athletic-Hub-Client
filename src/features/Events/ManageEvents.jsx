@@ -37,6 +37,9 @@ const ManageEvents = () => {
                                 event={event}
                                 index={index}
                                 key={event._id}
+                                onDeleteSuccess={deletedId => {
+                                    setEvents(prev => prev.filter(ev => ev._id !== deletedId));
+                                }}
                             ></ManageEvent>)
                         }
 

@@ -6,7 +6,7 @@ const FeaturedEvent = ({ event }) => {
 
     return (
         <div className="card bg-base-100 mb-10 md:mb-0 border-b-2 border-l border-t border-cyan-600 shadow-md hover:scale-105 transition duration-300">
-            <Link to={`/event/${_id}`}>
+            {/* <Link to={`/event/${_id}`}> */}
                 <div className="card-body">
                     <div className='flex flex-col md:flex-row items-start md:items-center space-y-4'>
                         <h3 className="card-title font-bold text-3xl">{eventName}</h3>
@@ -23,7 +23,7 @@ const FeaturedEvent = ({ event }) => {
                         </Link>
                     </div>
                 </div>
-            </Link>
+            {/* </Link> */}
         </div>
     );
 };

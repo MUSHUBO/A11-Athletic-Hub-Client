@@ -25,9 +25,9 @@ const SingleEvent = ({ event }) => {
                     <p className='overflow-hidden'>{shortDescription}</p>
 
                     <div className="card-actions justify-end">
-                        <Link to={`/event/${_id}`}>
+                        {/* <Link to={`/event/${_id}`}> */}
                             <button className="font-medium hover:text-purple-700">View Details</button>
-                        </Link>
+                        {/* </Link> */}
                     </div>
                 </div>
             </Link>
