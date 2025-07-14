@@ -1,14 +1,11 @@
 import axios from 'axios';
 import React from 'react';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa';
+import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 
 const ManageEvent = ({ event, index, onDeleteSuccess }) => {
     const { _id, image, eventName, eventDate, location, eventType } = event;
-
-    const handleUpdate = () => {
-
-    };
 
     const handleDelete = async () => {
         const result = await Swal.fire({
@@ -33,8 +30,6 @@ const ManageEvent = ({ event, index, onDeleteSuccess }) => {
                     console.error("Delete failed:", err);
                     Swal.fire("Error!", "Something went wrong.", "error");
                 });
-
-
         }
     }
 
@@ -57,12 +52,15 @@ const ManageEvent = ({ event, index, onDeleteSuccess }) => {
             <td>{location}</td>
             <td>{eventType}</td>
             <td className="flex gap-2 justify-center">
-                <button
-                    onClick={() => handleUpdate(event._id)}
-                    className="btn btn-sm bg-blue-500 text-white hover:bg-blue-600"
-                >
-                    <FaEdit /> Update
-                </button>
+                <Link to={`/updateEvent/${_id}`}>
+                    <button
+                        // onClick={() => handleUpdate(event._id)}
+                        className="btn btn-sm bg-blue-500 text-white hover:bg-blue-600"
+                    >
+                        <FaEdit /> Update
+                    </button>
+                </Link>
+
                 <button
                     onClick={() => handleDelete(event._id)}
                     className="btn btn-sm bg-red-500 text-white hover:bg-red-600"

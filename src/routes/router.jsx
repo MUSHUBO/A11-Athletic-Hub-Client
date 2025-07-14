@@ -14,6 +14,7 @@ import BookEvent from "../features/Events/bookEvent";
 import PrivateRoute from "../provider/PrivateRoute";
 import EventDetails from "../features/Events/EventDetails";
 import ManageEvents from "../features/Events/ManageEvents";
+import UpdateEvent from "../features/Events/UpdateEvent";
 
 const router = createBrowserRouter([
     {
@@ -68,6 +69,14 @@ const router = createBrowserRouter([
                 element: (
                     <PrivateRoute>
                         <ManageEvents></ManageEvents>
+                    </PrivateRoute>
+                )
+            },
+            {
+                path: '/updateEvent/:id',
+                element: (
+                    <PrivateRoute>
+                        <UpdateEvent></UpdateEvent>
                     </PrivateRoute>
                 )
             },

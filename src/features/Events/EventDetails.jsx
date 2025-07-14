@@ -50,17 +50,18 @@ const EventDetails = () => {
                     />
                 </figure>
                 <div className="card-body">
-                    <div className='flex flex-col md:flex-row items-start md:items-center space-y-4'>
+                    <div className='pace-y-4'>
                         <h3 className="card-title font-bold text-3xl">{eventName}</h3>
+                    </div>
+
+                    <div className='flex flex-col mt-2 md:flex-row font-medium text-lg space-y-2'>
+                        <p>{eventType}</p>
                         <p className='font-medium'>{eventDate}</p>
                     </div>
 
-                    <div className='flex flex-col md:flex-row font-medium text-lg space-y-2'>
-                        <h3>{location}</h3>
-                        <p>{eventType}</p>
-                    </div>
+                    <h3 className='font-medium text-lg'>{location}</h3>
 
-                    <p className='text-lg'>{description}</p>
+                    <p className='text-lg text-gray-500 mt-3'>{description}</p>
 
                     <div className='space-y-2 mt-4'>
                         <p className='text-lg font-medium'>Participant Email: <span className='text-purple-700'>{user?.email}</span></p>

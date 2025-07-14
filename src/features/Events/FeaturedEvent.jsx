@@ -10,10 +10,10 @@ const FeaturedEvent = ({ event }) => {
                 <div className="card-body">
                     <div className='flex flex-col md:flex-row items-start md:items-center space-y-4'>
                         <h3 className="card-title font-bold text-3xl">{eventName}</h3>
-                        <p className='font-medium flex justify-start md:justify-end'>{eventDate}</p>
+                        {/* <p className='font-medium flex justify-start md:justify-end'>{eventDate}</p> */}
                     </div>
 
-                    <p className='font-medium'>{eventDate}</p>
+                    <p className='font-medium mt-3'>{eventDate}</p>
 
                     <h3 className='font-medium text-lg'>{location}</h3>
 
