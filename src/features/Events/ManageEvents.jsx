@@ -10,7 +10,7 @@ const ManageEvents = () => {
 
     useEffect(() => {
         if (user?.email) {
-            axios.get(`http://localhost:3000/myEvents?user_email=${user.email}`)
+            axios.get(`https://a11-athletic-hub-server.vercel.app/myEvents?user_email=${user.email}`)
                 .then(res => setEvents(res.data))
                 .catch(err => console.error('Failed to fetch events:', err));
         }

@@ -23,7 +23,7 @@ const EventDetails = () => {
         currentEvent.eventId = id;
         delete currentEvent._id;
 
-        axios.post('http://localhost:3000/bookings', currentEvent)
+        axios.post('https://a11-athletic-hub-server.vercel.app/bookings', currentEvent)
             .then(res => {
                 if (res.data.insertedId) {
                     toast.success("Event Booking Successful!");

@@ -17,7 +17,7 @@ const CreateEvent = () => {
         // console.log(data);
 
         // save event to the database
-        axios.post('http://localhost:3000/events', data)
+        axios.post('https://a11-athletic-hub-server.vercel.app/events', data)
             .then(res => {
                 if (res.data.insertedId || res.data._id) {
                     Swal.fire({

@@ -7,7 +7,7 @@ const FeaturedEvents = () => {
     const [eventsData, setEventsData] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/featured-events')
+        fetch('https://a11-athletic-hub-server.vercel.app/featured-events')
             .then(res => res.json())
             .then(data => setEventsData(data));
     }, []);

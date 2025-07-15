@@ -1,11 +1,15 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const Terms = () => {
     return (
         <div className="max-w-4xl mx-auto px-4 py-8">
+            <Helmet>
+                <title>Terms & Conditions | Athletic Hub</title>
+            </Helmet>
 
             <h1 className="text-4xl font-bold mb-10 text-center">Terms & Conditions</h1>
-            
+
             <p className="mb-4">
                 Welcome to AthleticHub, an athletic event booking platform. By accessing or using our services, you agree to be bound by the following terms and conditions. Please read them carefully.
             </p>

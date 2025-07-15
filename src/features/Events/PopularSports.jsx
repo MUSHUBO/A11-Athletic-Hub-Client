@@ -6,7 +6,7 @@ const PopularSports = () => {
   const [sportsData, setSportsData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/popularSports')
+    axios.get('https://a11-athletic-hub-server.vercel.app/popularSports')
       .then(res => setSportsData(res.data))
       .catch(err => console.error(err));
   }, []);

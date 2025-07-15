@@ -21,7 +21,7 @@ const MyBooking = ({ booking, index, onDeleteSuccess }) => {
         });
 
         if (result.isConfirmed) {
-            axios.delete(`http://localhost:3000/bookings/${id}`)
+            axios.delete(`https://a11-athletic-hub-server.vercel.app/bookings/${id}`)
                 .then(res => {
                     if (res.data.deletedCount > 0) {
                         toast.success("Booking Cancelled!");

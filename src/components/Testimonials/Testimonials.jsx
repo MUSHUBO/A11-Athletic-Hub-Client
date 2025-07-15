@@ -6,7 +6,7 @@ const Testimonials = () => {
     const [feedbacks, setFeedbacks] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/testimonials')
+        axios.get('https://a11-athletic-hub-server.vercel.app/testimonials')
             .then(res => {
                 setFeedbacks(res.data);
             })
