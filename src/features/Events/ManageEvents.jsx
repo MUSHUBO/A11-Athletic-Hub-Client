@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import ManageEvent from './ManageEvent';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 
 const ManageEvents = () => {
     const { user } = useContext(AuthContext);
@@ -17,6 +18,10 @@ const ManageEvents = () => {
 
     return (
         <div className='p-6 max-w-6xl mx-auto'>
+            <Helmet>
+                <title>Manage Events | Athletic Hub</title>
+            </Helmet>
+
             <h2 className="text-4xl font-bold text-center mb-8 text-purple-600">🎯 Manage Your Events</h2>
 
             <div className="overflow-x-auto rounded-xl shadow border border-base-300">

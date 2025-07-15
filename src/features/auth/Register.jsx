@@ -5,6 +5,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { updateProfile } from 'firebase/auth';
 import Swal from 'sweetalert2';
 import SocialLogin from '../../components/SocialLogin/SocialLogin';
+import { Helmet } from 'react-helmet-async';
 
 
 const Register = () => {
@@ -55,6 +56,10 @@ const Register = () => {
 
     return (
         <div className="min-h-fit py-6 pb-28 lg:py-24 flex items-center justify-center bg-base-200">
+            <Helmet>
+                <title>Register | Athletic Hub</title>
+            </Helmet>
+
             <div className="w-full max-w-md p-8 mx-4 space-y-4 bg-white rounded-xl shadow-lg">
                 <h1 className="text-3xl font-bold text-center text-primary">Register Now</h1>
 

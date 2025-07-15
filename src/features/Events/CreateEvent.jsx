@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../../contexts/AuthContext';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const CreateEvent = () => {
     const { user } = useContext(AuthContext);
@@ -41,6 +42,10 @@ const CreateEvent = () => {
 
     return (
         <div className='my-10'>
+            <Helmet>
+                <title>Create-Event | Athletic Hub</title>
+            </Helmet>
+
             <h1 className='text-4xl font-bold text-center'><span className='text-emerald-500'>Create</span> Event</h1>
             <p className='text-gray-600 text-center mt-2 mb-10'>Here is create in you beautiful event and showing you event in the world</p>
 

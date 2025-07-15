@@ -3,6 +3,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 import axios from 'axios';
 import MyBooking from './MyBooking';
 import { ToastContainer } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 const MyBookings = () => {
     const { user } = useContext(AuthContext);
@@ -18,6 +19,10 @@ const MyBookings = () => {
 
     return (
         <div className='max-w-6xl mx-auto p-6 mb-16'>
+            <Helmet>
+                <title>My Bookings | Athletic Hub</title>
+            </Helmet>
+
             <h2 className="text-4xl font-bold text-center mb-8">🎟️ My Bookings</h2>
 
             {bookings.length === 0 ? (

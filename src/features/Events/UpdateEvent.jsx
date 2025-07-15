@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import Loading from '../../components/Loading/Loading';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const UpdateEvent = () => {
     const { id } = useParams();
@@ -50,6 +51,10 @@ const UpdateEvent = () => {
 
     return (
         <div className='max-w-3xl mx-auto my-10 p-8 border border-gray-200 shadow rounded-lg'>
+            <Helmet>
+                <title>Update Event | Athletic Hub</title>
+            </Helmet>
+
             <h2 className='text-3xl font-bold mb-6 text-center text-purple-600'>✏️ Update Event</h2>
 
             <form onSubmit={handleSubmit} className='space-y-4'>

@@ -4,6 +4,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from 'react-helmet-async';
 
 const EventDetails = () => {
     const { user } = useContext(AuthContext);
@@ -41,6 +42,10 @@ const EventDetails = () => {
 
     return (
         <div className='lg:w-2/4 mx-auto my-10'>
+            <Helmet>
+                <title>Event Details | {eventName} | Athletic Hub</title>
+            </Helmet>
+
             <div className="card bg-base-100 mb-10 border-b-2 border-l border-purple-300 shadow-lg hover:shadow-xl hover:shadow-purple-200">
                 <figure>
                     <img

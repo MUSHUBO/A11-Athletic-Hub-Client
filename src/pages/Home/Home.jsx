@@ -3,11 +3,16 @@ import Banner from '../../components/Banner/Banner';
 import FeaturedEvents from '../../features/Events/FeaturedEvents';
 import Testimonials from '../../components/Testimonials/Testimonials';
 import PopularSports from '../../features/Events/PopularSports';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Athletic Hub | Home</title>
+            </Helmet>
+
             <section className='Banner'>
                 <Banner></Banner>
             </section>
