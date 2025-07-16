@@ -29,7 +29,7 @@ const router = createBrowserRouter([
             {
                 path: '/allEvents',
                 Component: AllEvents,
-                loader: () => fetch('https://a11-athletic-hub-server.vercel.app/events')
+                // loader: () => fetch('https://a11-athletic-hub-server.vercel.app/events')
             },
             {
                 path: '/event/:id',

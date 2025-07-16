@@ -1,16 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import FeaturedEvent from './FeaturedEvent';
+import Loading from '../../components/Loading/Loading';
 
 const FeaturedEvents = () => {
-
     const [eventsData, setEventsData] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch('https://a11-athletic-hub-server.vercel.app/featured-events')
             .then(res => res.json())
-            .then(data => setEventsData(data));
+            .then(data => {
+                setEventsData(data);
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error(err);
+                setLoading(false);
+            });
     }, []);
+
+    if(loading) {
+        return <Loading></Loading>
+    }
 
     return (
         <div className='my-32'>
