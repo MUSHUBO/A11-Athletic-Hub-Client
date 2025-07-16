@@ -12,7 +12,7 @@ const AllEvents = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        axios.get("http://localhost:3000/events")
+        axios.get("https://a11-athletic-hub-server.vercel.app/events")
             .then(res => {
                 setAllEventsData(res.data);
                 setFilteredEvents(res.data); // initialize
