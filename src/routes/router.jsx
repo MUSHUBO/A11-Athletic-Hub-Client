@@ -33,7 +33,9 @@ const router = createBrowserRouter([
             },
             {
                 path: '/event/:id',
-                loader: ({ params }) => fetch(`https://a11-athletic-hub-server.vercel.app/events/${params.id}`),
+                loader: ({ params }) => fetch(`https://a11-athletic-hub-server.vercel.app/events/${params.id}`, {
+                    credentials: 'include'
+                }),
                 element: (
                     <PrivateRoute>
                         <EventDetails></EventDetails>

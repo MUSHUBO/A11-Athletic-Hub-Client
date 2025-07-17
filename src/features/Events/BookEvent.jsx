@@ -9,7 +9,9 @@ const BookEvent = () => {
 
     useEffect(() => {
         if (user?.email) {
-            axios.get(`https://a11-athletic-hub-server.vercel.app/otherEvents?email=${user.email}`)
+            axios.get(`https://a11-athletic-hub-server.vercel.app/otherEvents?email=${user.email}`, {
+                withCredentials: true
+            })
                 .then(res => setEvents(res.data))
                 .catch(err => console.error('Failed to fetch events:', err));
         }

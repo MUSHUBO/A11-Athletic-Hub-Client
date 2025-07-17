@@ -13,7 +13,9 @@ const UpdateEvent = () => {
 
     // get
     useEffect(() => {
-        axios.get(`https://a11-athletic-hub-server.vercel.app/events/${id}`)
+        axios.get(`https://a11-athletic-hub-server.vercel.app/events/${id}`, {
+            withCredentials: true
+        })
             .then(res => {
                 setEvent(res.data)
             })
@@ -36,7 +38,9 @@ const UpdateEvent = () => {
             image: form.image.value,
         };
 
-        axios.put(`https://a11-athletic-hub-server.vercel.app/events/${id}`, updatedEvent)
+        axios.put(`https://a11-athletic-hub-server.vercel.app/events/${id}`, updatedEvent, {
+            withCredentials: true
+        })
             .then(res => {
                 if (res.data.modifiedCount > 0) {
                     Swal.fire("Updated!", "Event updated successfully", "success");

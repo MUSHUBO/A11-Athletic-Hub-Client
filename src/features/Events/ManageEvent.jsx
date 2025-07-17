@@ -19,7 +19,9 @@ const ManageEvent = ({ event, index, onDeleteSuccess }) => {
         });
 
         if (result.isConfirmed) {
-            axios.delete(`https://a11-athletic-hub-server.vercel.app/events/${_id}`)
+            axios.delete(`https://a11-athletic-hub-server.vercel.app/events/${_id}`, {
+                withCredentials: true
+            })
                 .then(res => {
                     if (res.data.deletedCount > 0) {
                         Swal.fire("Deleted!", "Your event has been deleted.", "success");
