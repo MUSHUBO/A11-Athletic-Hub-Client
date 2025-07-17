@@ -13,7 +13,9 @@ const MyBookings = () => {
 
     useEffect(() => {
         if (user?.email) {
-            axios.get(`https://a11-athletic-hub-server.vercel.app/bookings?email=${user.email}`)
+            axios.get(`https://a11-athletic-hub-server.vercel.app/bookings?email=${user.email}`, {
+                withCredentials: true
+            })
                 .then(res => setBookings(res.data))
                 .catch(err => console.error(err));
         }
