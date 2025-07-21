@@ -53,7 +53,10 @@ const AuthProvider = ({ children }) => {
             
             // console.log('oky', currentUser);
         });
-        return () => unsubscribe();
+
+        return () => {
+            unsubscribe();
+        };
     }, []);
 
 
