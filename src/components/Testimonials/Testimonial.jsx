@@ -5,7 +5,7 @@ const Testimonial = ({ feedback }) => {
     const { name, image, comment } = feedback;
 
     return (
-        <div className="bg-white p-6 rounded-2xl border-t-4 border-cyan-500 shadow-md hover:shadow-lg">
+        <div className="bg-white dark:bg-base-200 p-6 rounded-2xl border-t-4 border-cyan-500 shadow-md hover:shadow-lg">
             <img
                 src={image}
                 alt={name}

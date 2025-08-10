@@ -6,7 +6,7 @@ Athletic Hub is an **Athletic Event Booking Platform** designed to connect athle
 ---
 
 ## 📸 Screenshot  
-![Athletic Hub Screenshot](./src/assets/Screenshot%202025-08-10%20180954.png) 
+![Athletic Hub Screenshot](./src/assets/Screenshot%202025-08-11%20015116.png) 
 
 ---
 
@@ -82,4 +82,3 @@ Athletic Hub is an **Athletic Event Booking Platform** designed to connect athle
 7. **Open your browser and visit:**
     - http://localhost:5173/
     - http://localhost:3000
-

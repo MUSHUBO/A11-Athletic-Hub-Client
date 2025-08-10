@@ -43,7 +43,7 @@ const CreateEvent = () => {
     }
 
     return (
-        <div className='my-10'>
+        <div className='my-10 mt-26'>
             <Helmet>
                 <title>Create-Event | Athletic Hub</title>
             </Helmet>
@@ -52,7 +52,7 @@ const CreateEvent = () => {
             <p className='text-gray-600 text-center mt-2 mb-10'>Here is create in you beautiful event and showing you event in the world</p>
 
             <form onSubmit={handleAddEvent}>
-                <div className="max-w-xl mx-auto p-6 bg-white rounded-xl shadow-md space-y-6">
+                <div className="max-w-xl mx-auto p-6 bg-white dark:bg-base-200 rounded-xl shadow-md space-y-6">
 
                     {/* Event Details */}
                     <fieldset className="border border-gray-300 rounded-lg p-4">
@@ -167,7 +167,7 @@ const CreateEvent = () => {
                                     name="creatorName"
                                     value={userName}
                                     readOnly
-                                    className="w-full px-4 py-2 cursor-not-allowed border border-emerald-300 bg-gray-100 rounded-md focus:outline-none"
+                                    className="w-full px-4 py-2 cursor-not-allowed border border-emerald-300 bg-gray-100 dark:bg-base-100 rounded-md focus:outline-none"
                                 />
                             </div>
 
@@ -180,7 +180,7 @@ const CreateEvent = () => {
                                     name="creatorEmail"
                                     value={userEmail}
                                     readOnly
-                                    className="w-full px-4 py-2 cursor-not-allowed border border-emerald-300 bg-gray-100 rounded-md focus:outline-none"
+                                    className="w-full px-4 py-2 cursor-not-allowed border border-emerald-300 bg-gray-100 dark:bg-base-100 rounded-md focus:outline-none"
                                 />
                             </div>
                         </div>

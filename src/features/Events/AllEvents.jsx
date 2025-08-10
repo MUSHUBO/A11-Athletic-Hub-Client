@@ -37,7 +37,7 @@ const AllEvents = () => {
     }
 
     return (
-        <div className='my-10 w-10/11 sm:w-full mx-auto'>
+        <div className='my-10 mt-26 w-10/11 sm:w-full mx-auto'>
             <Helmet>
                 <title>All Events | Athletic Hub</title>
             </Helmet>

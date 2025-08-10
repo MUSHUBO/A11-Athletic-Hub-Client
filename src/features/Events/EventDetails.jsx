@@ -43,7 +43,7 @@ const EventDetails = () => {
 
 
     return (
-        <div className='lg:w-2/4 mx-auto my-10'>
+        <div className='lg:w-2/4 mx-auto my-10 mt-26'>
             <Helmet>
                 <title>Event Details | {eventName} | Athletic Hub</title>
             </Helmet>

@@ -29,16 +29,16 @@ const Banner = () => {
             >
 
                 <SwiperSlide>
-                    <img className='max-h-[83vh] w-full mx-auto rounded-xl' src={card1} alt="Banner 1" />
+                    <img className='max-h-[85vh] w-full mx-auto rounded-xl' src={card1} alt="Banner 1" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className='max-h-[83vh] w-full mx-auto rounded-t-xl' src={card2} alt="Banner 2" />
+                    <img className='max-h-[85vh] w-full mx-auto rounded-t-xl' src={card2} alt="Banner 2" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className='max-h-[83vh] w-full mx-auto rounded-xl' src={card3} alt="Banner 3" />
+                    <img className='max-h-[85vh] w-full mx-auto rounded-xl' src={card3} alt="Banner 3" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className='max-h-[83vh] w-full mx-auto rounded-xl' src={card4} alt="Banner 4" />
+                    <img className='max-h-[85vh] w-full mx-auto rounded-xl' src={card4} alt="Banner 4" />
                 </SwiperSlide>
 
             </Swiper>
