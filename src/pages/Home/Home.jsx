@@ -13,7 +13,7 @@ const Home = () => {
                 <title>Athletic Hub | Home</title>
             </Helmet>
 
-            <section className='Banner'>
+            <section className='Banner mt-16'>
                 <Banner></Banner>
             </section>
             <section className='Events'>
