@@ -54,3 +54,32 @@ Athletic Hub is an **Athletic Event Booking Platform** designed to connect athle
 - tailwindcss `^4.1.8`   
 
 ---
+
+## ⚙️ How to Run Locally
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yourusername/athletic-hub.git
+
+2. **Navigate to the client directory and install dependencies:**
+    * cd athletic-hub/client
+    - npm install
+
+3. **Navigate to the server directory and install dependencies:**
+    * cd ../server
+    - npm install
+
+4. **Setup environment variables:**
+    - Create a .env file in the server folder and add necessary keys
+
+5. **Run the frontend client:**
+    * cd ../client
+    - npm run start
+
+6. **Run the backend server:**
+    - npm run start
+
+7. **Open your browser and visit:**
+    - http://localhost:5173/
+    - http://localhost:3000
+
