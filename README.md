@@ -37,13 +37,21 @@ Athletic Hub is an **Athletic Event Booking Platform** designed to connect athle
 ---
 
 ## 📦 Dependencies
-- react  
-- react-router-dom  
-- axios  
-- firebase  
-- tailwindcss  
-- express  
-- mongoose  
+
+- @tailwindcss/vite `^4.1.8`  
+- axios `^1.9.0`  
+- daisyui `^5.0.43`  
+- firebase `^11.9.1`  
+- lottie-react `^2.4.1`  
+- react `^19.1.0`  
+- react-dom `^19.1.0`  
+- react-helmet-async `^2.0.5`  
+- react-icons `^5.5.0`  
+- react-router `^7.6.2`  
+- react-toastify `^11.0.5`  
+- sweetalert2 `^11.22.0`  
+- swiper `^11.2.8`  
+- tailwindcss `^4.1.8`   
 
 ---
 

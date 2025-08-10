@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import "./navLinks.css"
 import navLogo from '../../assets/fav-icon.png'
@@ -8,6 +8,20 @@ import Swal from 'sweetalert2';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [theme, setTheme] = useState('light');
+
+    useEffect(() => {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        setTheme(savedTheme);
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    }, []);
+
+    const toggleTheme = () => {
+        const newTheme = theme === 'light' ? 'dark' : 'light';
+        setTheme(newTheme);
+        localStorage.setItem('theme', newTheme);
+        document.documentElement.setAttribute('data-theme', newTheme);
+    };
 
     const handleLogout = async () => {
 
@@ -82,6 +96,26 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-end flex items-center gap-5">
+                {/* Light/Dark Mode Toggle */}
+                <button
+                    onClick={toggleTheme}
+                    className="btn btn-square btn-ghost tooltip tooltip-bottom"
+                    data-tip={`Switch to ${theme === 'light' ? 'Dark' : 'Light'} Mode`}
+                    aria-label="Toggle Dark Mode"
+                >
+                    {theme === 'light' ? (
+                        // Moon icon for dark mode
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+                        </svg>
+                    ) : (
+                        // Sun icon for light mode
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m8.485-9h1M3.515 12h1m12.02-6.364l.707.707M6.343 17.657l.707.707m12.02 0l-.707.707M6.343 6.343l-.707.707M12 7a5 5 0 100 10 5 5 0 000-10z" />
+                        </svg>
+                    )}
+                </button>
+
                 <div className="dropdown dropdown-end">
                     {/* Profile Image and Name */}
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar tooltip tooltip-bottom" data-tip={user?.displayName || "Guest"}>
@@ -119,7 +153,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Login or Logout */}
-                {   
+                {
                     user ? (
                         <button onClick={handleLogout} className="btn btn-outline hover:btn-error">
                             Logout
