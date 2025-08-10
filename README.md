@@ -82,3 +82,4 @@ Athletic Hub is an **Athletic Event Booking Platform** designed to connect athle
 7. **Open your browser and visit:**
     - http://localhost:5173/
     - http://localhost:3000
+
